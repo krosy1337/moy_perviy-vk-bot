@@ -85,7 +85,7 @@ while True:
         elif 'симпл' in upd:
             user_id = update[0][3]
             group_id = -64241379
-            post_id = get_last_post(group_id, 1, 1, 'owner')
+            post_id = get_last_post(group_id, 1, random.randint(0, 1000), 'owner')
             attach = 'wall' + str(group_id) + '_' + str(post_id)
             print(attach)
             write_msg_attach(user_id, 'вот тебе красота', attach)
