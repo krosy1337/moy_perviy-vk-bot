@@ -82,7 +82,7 @@ while True:
             user_id = update[0][3]
             print(update)
             frwd_msg(user_id, update[0][1] - 2, 'держи')
-        elif 'красив' in upd:
+        elif 'симпл' in upd:
             user_id = update[0][3]
             group_id = -64241379
             post_id = get_last_post(group_id, 1, 1, 'owner')
