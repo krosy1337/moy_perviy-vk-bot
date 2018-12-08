@@ -14,8 +14,6 @@ def send_photo(user_id, photo):
 
 
 PHOTO_2 = 'photo324207419_456239051'
-PHOTO_1 = 'photo-174113882_456239031'
-random_photo = random.randint(1, 2)
 
 
 def frwd_msg(user_id, messag, text):
