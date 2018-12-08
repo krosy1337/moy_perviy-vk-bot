@@ -39,36 +39,36 @@ while True:
                                                                        ts=ts)).json()
     update = long_poll['updates']
     if update[0][0] == 4:
-        if update[0][6].lower() == "привет":
-            print(update)
+        upd = update[0][6].lower()
+        if "прив" in upd:    # Если нам пишут привет
+            print(upd)
             user_id = update[0][3]
             user_name = vk_bot.method('users.get', {'user_ids': user_id})
             print(user_name)
             write_msg(user_id, 'Привет, ' + (user_name[0]['first_name']))  # сообщение пользователю
             print(str(user_name[0]['first_name']) + ' ' +
                   str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(update[0][6]))  # соообщение нам
-        elif update[0][6].lower() == "кто молодец?":
+        elif "кто молодец?" in upd:
             # print(update[0][6])
             user_id = update[0][3]
             write_msg(user_id, 'Ты молодец')
-            print(str(user_name[0]['first_name']) + ' ' + str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(
-                update[0][6]))
-        elif update[0][6].lower() == "как дела?":
-            # print(update[0][6])
-            user_id = update[0][3]
-            user_name = vk_bot.method('users.get', {'user_ids': user_id})
-            write_msg(user_id, 'Отлично, ' + (user_name[0]['first_name']))
-            print(str(user_name[0]['first_name']) + ' ' + str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(
-                update[0][6]))
-        elif update[0][6].lower() == "пока":
+        elif "как" in upd:  # Если нам пишут как дела?
+            if "дел" in upd:
+                # print(update[0][6])
+                user_id = update[0][3]
+                user_name = vk_bot.method('users.get', {'user_ids': user_id})
+                write_msg(user_id, 'Отлично, ' + (user_name[0]['first_name']))
+                print(str(user_name[0]['first_name']) + ' ' + str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(
+                    update[0][6]))
+        elif "пока" in upd:
             user_id = update[0][3]
             write_msg(user_id, 'Пока')
             print(str(user_name[0]['first_name']) + ' ' + str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(
                 update[0][6]))
-        elif update[0][6].lower() == 'картинка':
+        elif 'картинк' in upd:
             user_id = update[0][3]
-            send_photo(user_id, PHOTO_1)
-        elif update[0][6].lower() == 'перешли':
+            send_photo(user_id, PHOTO_2)
+        elif 'перешли' in upd:
             user_id = update[0][3]
             print(update)
             frwd_msg(user_id, update[0][1] - 2, 'держи')
