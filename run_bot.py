@@ -86,9 +86,10 @@ while True:
             user_id = update[0][3]
             group_id = -64241379
             post_name = vk_bot_user.method('wall.get', {'owner_id': group_id, 'count': 1, 'offset': 1, 'filter': 'owner'})
-            print(post_name)
+            # print(post_name['items'][0]['attachments'][0]['type'])    # photo
+            # print(post_name['items'][0]['attachments'][0]['photo']['id']) #id photo
             post_id = get_last_post(group_id, 1, 1, 'owner')
-            attach = 'wall' + str(group_id) + '_' + str(post_id)
+            attach = str(post_name['items'][0]['attachments'][0]['type']) + str(group_id) + '_' + str(post_name['items'][0]['attachments'][0]['photo']['id'])
             print(attach)
             write_msg_attach(user_id, 'вот тебе S1mple', attach)
         else:
