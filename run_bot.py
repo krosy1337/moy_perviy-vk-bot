@@ -67,14 +67,9 @@ while True:
                 user_id = update[0][3]
                 user_name = vk_bot.method('users.get', {'user_ids': user_id})
                 write_msg(user_id, 'Отлично, ' + (user_name[0]['first_name']))
-                print(str(user_name[0]['first_name']) + ' ' + str(
-                    user_name[0]['last_name']) + ' написал(а) боту - ' + str(
-                    update[0][6]))
         elif "пока" in upd:
             user_id = update[0][3]
             write_msg(user_id, 'Пока')
-            print(str(user_name[0]['first_name']) + ' ' + str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(
-                update[0][6]))
         elif 'картинк' in upd:
             user_id = update[0][3]
             send_photo(user_id, PHOTO_2)
@@ -91,6 +86,12 @@ while True:
             attach = str(post_name['items'][0]['attachments'][random.randint(0, 5)]['type']) + str(group_id) + '_' + str(post_name['items'][0]['attachments'][random.randint(0, 5)]['photo']['id'])
             # print(post_name['items'][0]['attachments'][3])
             write_msg_attach(user_id, 'вот тебе цветы', attach)
+        elif 'машин' in upd:
+            user_id = update[0][3]
+            group_id = -19779149
+            post_id = get_last_post(group_id,1,random.randint(0, 7), 'owner')
+            attach = 'wall' + str(group_id) + '_' + str(post_id)
+            write_msg_attach(user_id, 'вот тебе машины', attach)
         else:
             # print(update)
             user_id = update[0][3]
