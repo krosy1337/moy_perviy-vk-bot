@@ -9,8 +9,8 @@ def write_msg(user_id, text):
     vk_bot.method('messages.send', {'user_id': user_id, 'message': text, 'random_id': random.randint(0, 1000)})
 
 
-def send_photo(user_id, photo):
-    vk_bot.method('messages.send', {'user_id': user_id, 'attachment': photo, 'random_id': random.randint(0, 1000)})
+def send_photo(user_id, photo, messag):
+    vk_bot.method('messages.send', {'user_id': user_id, 'attachment': photo, 'message': messag,'random_id': random.randint(0, 1000)})
 
 
 def get_last_post(owner_id, count, offset, filter):
@@ -67,9 +67,9 @@ while True:
             print(update[0][1])
             if upd == 'да' or 'хочу':
                 user_id = update[0][3]
-                write_msg(user_id, 'Ты в подземелье, тебе нужно из него выбраться. Выбери один из четырёх путей. ')
+                send_photo(user_id, 'photo-174113882_456239125' ,'Ты в подземелье, тебе нужно из него выбраться. Выбери один из трёх путей.')
         if update[0][1] == msgg + 2:
-            if upd == '9':
+            if upd == 'а':
                 user_id = update[0][3]
                 write_msg(user_id, 'Ю ар в жопе. ')
 
