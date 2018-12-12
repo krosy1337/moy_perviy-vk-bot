@@ -54,7 +54,7 @@ while True:
             u1 = update[0][1]
             user_id = update[0][3]
             msg = update[0][1]
-            msgg = update[0][1] + 3
+            msgg = 1
             print(msg)
             user_name = vk_bot.method('users.get', {'user_ids': user_id})
             print(user_name)
@@ -65,13 +65,22 @@ while True:
         if update[0][1] == msg + 3:
             print(msg + 2)
             print(update[0][1])
+            msg = update[0][1]
             if upd == 'да' or 'хочу':
                 user_id = update[0][3]
                 send_photo(user_id, 'photo-174113882_456239125' ,'Ты в подземелье, тебе нужно из него выбраться. Выбери один из трёх путей.')
-        if update[0][1] == msgg + 2:
-            if upd == 'а':
+        if update[0][1] == msg + 2:
+            if upd == 'a':
                 user_id = update[0][3]
                 write_msg(user_id, 'Ю ар в жопе. ')
+            if upd == 'b':
+                user_id = update[0][3]
+                write_msg(user_id, 'Ю нот в жопе. ')
+            if upd == 'c':
+                user_id = update[0][3]
+                write_msg(user_id, 'ЛОХ. ')
+
+
 
 
 
