@@ -50,52 +50,63 @@ while True:
     if update[0][0] == 4:
         upd = update[0][6].lower()
         if "прив" in upd:  # Если нам пишут привет
-            print(upd)
+            print(update)
+            u1 = update[0][1]
             user_id = update[0][3]
+            msg = update[0][1]
+            print(msg)
             user_name = vk_bot.method('users.get', {'user_ids': user_id})
             print(user_name)
             write_msg(user_id, 'Привет, ' + (user_name[0]['first_name']))  # сообщение пользователю
+            write_msg(user_id, 'Хочешь начать игру? ')
             print(str(user_name[0]['first_name']) + ' ' +
                   str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(update[0][6]))  # соообщение нам
-        elif "кто молодец?" in upd:
-            # print(update[0][6])
-            user_id = update[0][3]
-            write_msg(user_id, 'Ты молодец')
-        elif "как" in upd:  # Если нам пишут как дела?
-            if "дел" in upd:
-                # print(update[0][6])
+        if update[0][1] == msg + 3:
+            print(msg+2)
+            print(update[0][1])
+            if upd == 'да':
                 user_id = update[0][3]
-                user_name = vk_bot.method('users.get', {'user_ids': user_id})
-                write_msg(user_id, 'Отлично, ' + (user_name[0]['first_name']))
-        elif "пока" in upd:
-            user_id = update[0][3]
-            write_msg(user_id, 'Пока')
-        elif 'картинк' in upd:
-            user_id = update[0][3]
-            send_photo(user_id, PHOTO_2)
-        elif 'перешли' in upd:
-            user_id = update[0][3]
-            print(update)
-            frwd_msg(user_id, update[0][1] - 2, 'держи')
-        elif 'цвет' in upd:
-            user_id = update[0][3]
-            group_id = -27022023
-            post_name = vk_bot_user.method('wall.get', {'owner_id': group_id, 'count': 1, 'offset': random.randint(0, 2,) or random.randint(4,5) , 'filter': 'owner'})
-            # print(post_name['items'][0]['attachments'][0]['type'])    # photo
-            # print(post_name['items'][0]['attachments'][0]) #id photo
-            attach = str(post_name['items'][0]['attachments'][random.randint(0, 5)]['type']) + str(group_id) + '_' + str(post_name['items'][0]['attachments'][random.randint(0, 5)]['photo']['id'])
-            # print(post_name['items'][0]['attachments'][3])
-            write_msg_attach(user_id, 'вот тебе цветы', attach)
-        elif 'машин' in upd:
-            user_id = update[0][3]
-            group_id = -19779149
-            post_id = get_last_post(group_id,1,random.randint(0, 7), 'owner')
-            attach = 'wall' + str(group_id) + '_' + str(post_id)
-            write_msg_attach(user_id, 'вот тебе машины', attach)
-        else:
-            # print(update)
-            user_id = update[0][3]
-            write_msg(user_id, 'Нет такой команды')
+                write_msg(user_id, 'Ты в подземелье, тебе нужно из него выбраться. Выбери один из четырёх путей. ')
+
+        # elif "кто молодец?" in upd:
+        #     # print(update[0][6])
+        #     user_id = update[0][3]
+        #     write_msg(user_id, 'Ты молодец')
+        # elif "как" in upd:  # Если нам пишут как дела?
+        #     if "дел" in upd:
+        #         # print(update[0][6])
+        #         user_id = update[0][3]
+        #         user_name = vk_bot.method('users.get', {'user_ids': user_id})
+        #         write_msg(user_id, 'Отлично, ' + (user_name[0]['first_name']))
+        # elif "пока" in upd:
+        #     user_id = update[0][3]
+        #     write_msg(user_id, 'Пока')
+        # elif 'картинк' in upd:
+        #     user_id = update[0][3]
+        #     send_photo(user_id, PHOTO_2)
+        # elif 'перешли' in upd:
+        #     user_id = update[0][3]
+        #     print(update)
+        #     frwd_msg(user_id, update[0][1] - 2, 'держи')
+        # elif 'цвет' in upd:
+        #     user_id = update[0][3]
+        #     group_id = -27022023
+        #     post_name = vk_bot_user.method('wall.get', {'owner_id': group_id, 'count': 1, 'offset': random.randint(0, 2,) or random.randint(4,5) , 'filter': 'owner'})
+        #     # print(post_name['items'][0]['attachments'][0]['type'])    # photo
+        #     # print(post_name['items'][0]['attachments'][0]) #id photo
+        #     attach = str(post_name['items'][0]['attachments'][random.randint(0, 5)]['type']) + str(group_id) + '_' + str(post_name['items'][0]['attachments'][random.randint(0, 5)]['photo']['id'])
+        #     # print(post_name['items'][0]['attachments'][3])
+        #     write_msg_attach(user_id, 'вот тебе цветы', attach)
+        # elif 'машин' in upd:
+        #     user_id = update[0][3]
+        #     group_id = -19779149
+        #     post_id = get_last_post(group_id,1,random.randint(0, 7), 'owner')
+        #     attach = 'wall' + str(group_id) + '_' + str(post_id)
+        #     write_msg_attach(user_id, 'вот тебе машины', attach)
+        # else:
+        #     # print(update)
+        #     user_id = update[0][3]
+        #     write_msg(user_id, 'Нет такой команды')
 
     #  Меняем ts для следующего запроса
     ts = long_poll['ts']
