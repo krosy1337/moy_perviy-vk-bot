@@ -20,8 +20,8 @@ def get_last_post(owner_id, count, offset, filter):
 
 
 def write_msg_attach(user_id, text, attach):
-    vk_bot.method('messages.send', {'user_id': user_id, 'attachment': attach, 'message': text, 'random_id': random.randint(0, 1000)})
-
+    vk_bot.method('messages.send',
+                  {'user_id': user_id, 'attachment': attach, 'message': text, 'random_id': random.randint(0, 1000)})
 
 
 PHOTO_2 = 'photo324207419_456239051'
@@ -54,6 +54,7 @@ while True:
             u1 = update[0][1]
             user_id = update[0][3]
             msg = update[0][1]
+            msgg = update[0][1] + 3
             print(msg)
             user_name = vk_bot.method('users.get', {'user_ids': user_id})
             print(user_name)
@@ -62,11 +63,17 @@ while True:
             print(str(user_name[0]['first_name']) + ' ' +
                   str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(update[0][6]))  # соообщение нам
         if update[0][1] == msg + 3:
-            print(msg+2)
+            print(msg + 2)
             print(update[0][1])
-            if upd == 'да':
+            if upd == 'да' or 'хочу':
                 user_id = update[0][3]
                 write_msg(user_id, 'Ты в подземелье, тебе нужно из него выбраться. Выбери один из четырёх путей. ')
+        if update[0][1] == msgg + 2:
+            if upd == '9':
+                user_id = update[0][3]
+                write_msg(user_id, 'Ю ар в жопе. ')
+
+
 
         # elif "кто молодец?" in upd:
         #     # print(update[0][6])
