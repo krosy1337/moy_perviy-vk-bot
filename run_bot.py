@@ -10,7 +10,8 @@ def write_msg(user_id, text):
 
 
 def send_photo(user_id, photo, messag):
-    vk_bot.method('messages.send', {'user_id': user_id, 'attachment': photo, 'message': messag,'random_id': random.randint(0, 1000)})
+    vk_bot.method('messages.send',
+                  {'user_id': user_id, 'attachment': photo, 'message': messag, 'random_id': random.randint(0, 1000)})
 
 
 def get_last_post(owner_id, count, offset, filter):
@@ -50,35 +51,83 @@ while True:
     if update[0][0] == 4:
         upd = update[0][6].lower()
         if "прив" in upd:  # Если нам пишут привет
-            print(update)
+            # print(update)
             u1 = update[0][1]
             user_id = update[0][3]
             msg = update[0][1]
-            msgg = 1
-            print(msg)
+            # print(msg)
             user_name = vk_bot.method('users.get', {'user_ids': user_id})
-            print(user_name)
+            # print(user_name)
             write_msg(user_id, 'Привет, ' + (user_name[0]['first_name']))  # сообщение пользователю
             write_msg(user_id, 'Хочешь начать игру? ')
-            print(str(user_name[0]['first_name']) + ' ' +
-                  str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(update[0][6]))  # соообщение нам
+            # print(str(user_name[0]['first_name']) + ' ' +
+            #       str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(update[0][6]))  # соообщение нам
         if update[0][1] == msg + 3:
-            print(msg + 2)
-            print(update[0][1])
-            msg = update[0][1]
-            if upd == 'да' or 'хочу':
+            # print(msg + 2)
+            # print(update[0][1])
+            if upd == 'да':
                 user_id = update[0][3]
-                send_photo(user_id, 'photo-174113882_456239125' ,'Ты в подземелье, тебе нужно из него выбраться. Выбери один из трёх путей.')
+                msg = update[0][1]
+                send_photo(user_id, 'photo-174113882_456239125',
+                           'Ты в подземелье, тебе нужно из него выбраться. Выбери один из трёх путей.')
         if update[0][1] == msg + 2:
+            slovo = upd
             if upd == 'a':
                 user_id = update[0][3]
-                write_msg(user_id, 'Ю ар в жопе. ')
+                send_photo(user_id, 'photo-174113882_456239126', 'Ты выбрал вариант A')
             if upd == 'b':
                 user_id = update[0][3]
-                write_msg(user_id, 'Ю нот в жопе. ')
+                write_msg(user_id, 'Ты выбрал вариант B')
             if upd == 'c':
                 user_id = update[0][3]
-                write_msg(user_id, 'ЛОХ. ')
+                write_msg(user_id, 'Ты выбрал вариант C')
+        if update[0][1] == msg + 4:
+            if slovo == 'a':
+                if upd == 'a':
+                    write_msg(user_id, 'Ты выбрал путь A')
+                if upd == 'b':
+                    write_msg(user_id, 'Ты выбрал путь B')
+                if upd == 'c':
+                    write_msg(user_id, 'Ты выбрал путь C')
+            if slovo == 'b':
+                if upd == 'a':
+                    write_msg(user_id, 'Ты выбрал путь ')
+                if upd == 'b':
+                    write_msg(user_id, 'Ты выбрал путь ')
+                if upd == 'c':
+                    write_msg(user_id, 'Ты выбрал путь ')
+            if slovo == 'c':
+                if upd == 'a':
+                    write_msg(user_id, 'Ты выбрал путь самурая ')
+                if upd == 'b':
+                    write_msg(user_id, 'Ты выбрал путь самурая')
+                if upd == 'c':
+                    write_msg(user_id, 'Ты выбрал путь самурая')
+            slovo = upd
+        if update[0][1] == msg + 6:
+            if slovo == 'a':
+                if upd == 'a':
+                    write_msg(user_id, 'Ты выбрал  A')
+                if upd == 'b':
+                    write_msg(user_id, 'Ты выбрал  B')
+                if upd == 'c':
+                    write_msg(user_id, 'Ты выбрал C')
+            if slovo == 'b':
+                if upd == 'a':
+                    write_msg(user_id, 'Ты выбрал паутину A')
+                if upd == 'b':
+                    write_msg(user_id, 'Ты выбрал паутину B')
+                if upd == 'c':
+                    write_msg(user_id, 'Ты выбрал паутину C')
+            if slovo == 'c':
+                if upd == 'a':
+                    write_msg(user_id, 'Ты выбрал паутину Ac')
+                if upd == 'b':
+                    write_msg(user_id, 'Ты выбрал паутину Bc')
+                if upd == 'c':
+                    write_msg(user_id, 'Ты выбрал паутину Cc')
+
+
 
 
 
