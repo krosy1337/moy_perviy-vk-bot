@@ -26,6 +26,7 @@ def write_msg_attach(user_id, text, attach):
 
 
 PHOTO_2 = 'photo324207419_456239051'
+msg = -1
 
 
 def frwd_msg(user_id, messag, text):
@@ -43,16 +44,16 @@ print("готов к работе")
 
 while True:
     long_poll = requests.get(
-        'https://{server}?act={act}&key={key}&ts={ts}&wait=9999999999999999'.format(server=server,
-                                                                                    act='a_check',
-                                                                                    key=key,
-                                                                                    ts=ts)).json()
+        'https://{server}?act={act}&key={key}&ts={ts}&wait=500'.format(server=server,
+                                                                       act='a_check',
+                                                                       key=key,
+                                                                       ts=ts)).json()
     update = long_poll['updates']
     if update[0][0] == 4:
         upd = update[0][6].lower()
-        if "прив" in upd:  # Если нам пишут привет
+        print(update)
+        if "прив" in update[0][6]:  # Если нам пишут привет
             # print(update)
-            u1 = update[0][1]
             user_id = update[0][3]
             msg = update[0][1]
             # print(msg)
@@ -72,106 +73,154 @@ while True:
                            'Ты в подземелье, тебе нужно из него выбраться. Выбери один из трёх путей.')
         if update[0][1] == msg + 2:
             slovo = upd
+            print(slovo)
             if upd == 'a':
                 user_id = update[0][3]
-                send_photo(user_id, 'photo-174113882_456239126', 'Ты выбрал вариант A')
+                send_photo(user_id, 'photo-174113882_456239126', 'Ты в комнате A')
             if upd == 'b':
                 user_id = update[0][3]
-                write_msg(user_id, 'Ты выбрал вариант B')
+                write_msg(user_id, 'Ты в комнате B')
             if upd == 'c':
                 user_id = update[0][3]
-                write_msg(user_id, 'Ты выбрал вариант C')
+                write_msg(user_id, 'Ты в комнате C')
         if update[0][1] == msg + 4:
             if slovo == 'a':
                 if upd == 'a':
-                    write_msg(user_id, 'Ты выбрал путь A')
+                    user_id = update[0][3]
+                    write_msg(user_id, 'Ты в комнате AA')
                 if upd == 'b':
-                    write_msg(user_id, 'Ты выбрал путь B')
+                    user_id = update[0][3]
+                    write_msg(user_id, 'Ты в комнате AB')
                 if upd == 'c':
-                    write_msg(user_id, 'Ты выбрал путь C')
+                    user_id = update[0][3]
+                    write_msg(user_id, 'Ты в комнате AC')
             if slovo == 'b':
                 if upd == 'a':
-                    write_msg(user_id, 'Ты выбрал путь ')
+                    user_id = update[0][3]
+                    write_msg(user_id, 'Ты в комнате BA')
                 if upd == 'b':
-                    write_msg(user_id, 'Ты выбрал путь ')
+                    user_id = update[0][3]
+                    write_msg(user_id, 'Ты в комнате BB')
                 if upd == 'c':
-                    write_msg(user_id, 'Ты выбрал путь ')
+                    user_id = update[0][3]
+                    write_msg(user_id, 'Ты в комнате BC')
             if slovo == 'c':
                 if upd == 'a':
-                    write_msg(user_id, 'Ты выбрал путь самурая ')
+                    user_id = update[0][3]
+                    write_msg(user_id, 'Ты в комнате CA')
                 if upd == 'b':
-                    write_msg(user_id, 'Ты выбрал путь самурая')
+                    user_id = update[0][3]
+                    write_msg(user_id, 'Ты в комнате CB')
                 if upd == 'c':
-                    write_msg(user_id, 'Ты выбрал путь самурая')
-            slovo = upd
+                    user_id = update[0][3]
+                    write_msg(user_id, 'Ты в комнате CC')
+            slovo2 = upd
+            print(slovo2)
         if update[0][1] == msg + 6:
             if slovo == 'a':
-                if upd == 'a':
-                    write_msg(user_id, 'Ты выбрал  A')
-                if upd == 'b':
-                    write_msg(user_id, 'Ты выбрал  B')
-                if upd == 'c':
-                    write_msg(user_id, 'Ты выбрал C')
+                if slovo2 == 'a':
+                    if upd == 'a':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате AAA')
+                    if upd == 'b':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате AAB')
+                    if upd == 'c':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате AAC')
+                if slovo2 == 'b':
+                    if upd == 'a':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате ABA')
+                    if upd == 'b':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате ABB')
+                    if upd == 'c':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате ABC')
+                if slovo2 == 'c':
+                    if upd == 'a':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате ACA')
+                    if upd == 'b':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате ACB')
+                    if upd == 'c':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате ACC')
             if slovo == 'b':
-                if upd == 'a':
-                    write_msg(user_id, 'Ты выбрал паутину A')
-                if upd == 'b':
-                    write_msg(user_id, 'Ты выбрал паутину B')
-                if upd == 'c':
-                    write_msg(user_id, 'Ты выбрал паутину C')
+                if slovo2 == 'a':
+                    if upd == 'a':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате BAA')
+                    if upd == 'b':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате BAB')
+                    if upd == 'c':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате BAC')
+                if slovo2 == 'b':
+                    if upd == 'a':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате BBA')
+                    if upd == 'b':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате BBB')
+                    if upd == 'c':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате BBC')
+                if slovo2 == 'c':
+                    if upd == 'a':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате BCA')
+                    if upd == 'b':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате BCB')
+                    if upd == 'c':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате BCC')
             if slovo == 'c':
-                if upd == 'a':
-                    write_msg(user_id, 'Ты выбрал паутину Ac')
-                if upd == 'b':
-                    write_msg(user_id, 'Ты выбрал паутину Bc')
-                if upd == 'c':
-                    write_msg(user_id, 'Ты выбрал паутину Cc')
+                if slovo2 == 'a':
+                    if upd == 'a':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате CAA')
+                    if upd == 'b':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате CAB')
+                    if upd == 'c':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате CAC')
+                if slovo2 == 'b':
+                    if upd == 'a':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате CBA')
+                    if upd == 'b':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате CBB')
+                    if upd == 'c':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате CBC')
+                if slovo2 == 'c':
+                    if upd == 'a':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате CCA')
+                    if upd == 'b':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате CCB')
+                    if upd == 'c':
+                        user_id = update[0][3]
+                        write_msg(user_id, 'Ты в комнате CCC')
 
 
-
-
-
-
-
-        # elif "кто молодец?" in upd:
-        #     # print(update[0][6])
-        #     user_id = update[0][3]
-        #     write_msg(user_id, 'Ты молодец')
-        # elif "как" in upd:  # Если нам пишут как дела?
-        #     if "дел" in upd:
-        #         # print(update[0][6])
-        #         user_id = update[0][3]
-        #         user_name = vk_bot.method('users.get', {'user_ids': user_id})
-        #         write_msg(user_id, 'Отлично, ' + (user_name[0]['first_name']))
-        # elif "пока" in upd:
-        #     user_id = update[0][3]
-        #     write_msg(user_id, 'Пока')
-        # elif 'картинк' in upd:
-        #     user_id = update[0][3]
-        #     send_photo(user_id, PHOTO_2)
-        # elif 'перешли' in upd:
-        #     user_id = update[0][3]
-        #     print(update)
-        #     frwd_msg(user_id, update[0][1] - 2, 'держи')
-        # elif 'цвет' in upd:
-        #     user_id = update[0][3]
-        #     group_id = -27022023
-        #     post_name = vk_bot_user.method('wall.get', {'owner_id': group_id, 'count': 1, 'offset': random.randint(0, 2,) or random.randint(4,5) , 'filter': 'owner'})
-        #     # print(post_name['items'][0]['attachments'][0]['type'])    # photo
-        #     # print(post_name['items'][0]['attachments'][0]) #id photo
-        #     attach = str(post_name['items'][0]['attachments'][random.randint(0, 5)]['type']) + str(group_id) + '_' + str(post_name['items'][0]['attachments'][random.randint(0, 5)]['photo']['id'])
-        #     # print(post_name['items'][0]['attachments'][3])
-        #     write_msg_attach(user_id, 'вот тебе цветы', attach)
-        # elif 'машин' in upd:
-        #     user_id = update[0][3]
-        #     group_id = -19779149
-        #     post_id = get_last_post(group_id,1,random.randint(0, 7), 'owner')
-        #     attach = 'wall' + str(group_id) + '_' + str(post_id)
-        #     write_msg_attach(user_id, 'вот тебе машины', attach)
-        # else:
-        #     # print(update)
-        #     user_id = update[0][3]
-        #     write_msg(user_id, 'Нет такой команды')
+        elif 'цвет' in upd:
+            user_id = update[0][3]
+            group_id = -27022023
+            post_name = vk_bot_user.method('wall.get', {'owner_id': group_id, 'count': 1, 'offset': random.randint(0, 2,) or random.randint(4,5) , 'filter': 'owner'})
+            # print(post_name['items'][0]['attachments'][0]['type'])    # photo
+            # print(post_name['items'][0]['attachments'][0]) #id photo
+            attach = str(post_name['items'][0]['attachments'][random.randint(0, 5)]['type']) + str(group_id) + '_' + str(post_name['items'][0]['attachments'][random.randint(0, 5)]['photo']['id'])
+            # print(post_name['items'][0]['attachments'][3])
+            write_msg_attach(user_id, 'вот тебе цветы', attach)
 
     #  Меняем ts для следующего запроса
     ts = long_poll['ts']
