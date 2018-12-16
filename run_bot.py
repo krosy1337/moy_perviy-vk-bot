@@ -51,8 +51,7 @@ while True:
     update = long_poll['updates']
     if update[0][0] == 4:
         upd = update[0][6].lower()
-        print(update)
-        if "прив" in update[0][6]:  # Если нам пишут привет
+        if "прив" in upd:  # Если нам пишут привет
             # print(update)
             user_id = update[0][3]
             msg = update[0][1]
@@ -63,151 +62,151 @@ while True:
             write_msg(user_id, 'Хочешь начать игру? ')
             # print(str(user_name[0]['first_name']) + ' ' +
             #       str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(update[0][6]))  # соообщение нам
-        if update[0][1] == msg + 3:
+        elif update[0][1] == msg + 3:
             # print(msg + 2)
             # print(update[0][1])
             if upd == 'да':
                 user_id = update[0][3]
                 msg = update[0][1]
-                send_photo(user_id, 'photo-174113882_456239125',
+                send_photo(user_id, 'photo-174113882_456239136',
                            'Ты в подземелье, тебе нужно из него выбраться. Выбери один из трёх путей.')
-        if update[0][1] == msg + 2:
+        elif update[0][1] == msg + 2:
             slovo = upd
             print(slovo)
             if upd == 'a':
                 user_id = update[0][3]
-                send_photo(user_id, 'photo-174113882_456239126', 'Ты в комнате A')
-            if upd == 'b':
+                send_photo(user_id, 'photo-174113882_456239137', 'Ты в комнате A')
+            elif upd == 'b':
                 user_id = update[0][3]
                 write_msg(user_id, 'Ты в комнате B')
-            if upd == 'c':
+            elif upd == 'c':
                 user_id = update[0][3]
                 write_msg(user_id, 'Ты в комнате C')
-        if update[0][1] == msg + 4:
+        elif update[0][1] == msg + 4:
             if slovo == 'a':
                 if upd == 'a':
                     user_id = update[0][3]
-                    write_msg(user_id, 'Ты в комнате AA')
-                if upd == 'b':
+                    send_photo(user_id, 'photo-174113882_456239138' , 'Ты в комнате AA')
+                elif upd == 'b':
                     user_id = update[0][3]
                     write_msg(user_id, 'Ты в комнате AB')
-                if upd == 'c':
+                elif upd == 'c':
                     user_id = update[0][3]
                     write_msg(user_id, 'Ты в комнате AC')
-            if slovo == 'b':
+            elif slovo == 'b':
                 if upd == 'a':
                     user_id = update[0][3]
                     write_msg(user_id, 'Ты в комнате BA')
-                if upd == 'b':
+                elif upd == 'b':
                     user_id = update[0][3]
                     write_msg(user_id, 'Ты в комнате BB')
-                if upd == 'c':
+                elif upd == 'c':
                     user_id = update[0][3]
                     write_msg(user_id, 'Ты в комнате BC')
-            if slovo == 'c':
+            elif slovo == 'c':
                 if upd == 'a':
                     user_id = update[0][3]
                     write_msg(user_id, 'Ты в комнате CA')
-                if upd == 'b':
+                elif upd == 'b':
                     user_id = update[0][3]
                     write_msg(user_id, 'Ты в комнате CB')
-                if upd == 'c':
+                elif upd == 'c':
                     user_id = update[0][3]
                     write_msg(user_id, 'Ты в комнате CC')
             slovo2 = upd
             print(slovo2)
-        if update[0][1] == msg + 6:
+        elif update[0][1] == msg + 6:
             if slovo == 'a':
                 if slovo2 == 'a':
                     if upd == 'a':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате AAA')
-                    if upd == 'b':
+                    elif upd == 'b':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате AAB')
-                    if upd == 'c':
+                    elif upd == 'c':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате AAC')
-                if slovo2 == 'b':
+                elif slovo2 == 'b':
                     if upd == 'a':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате ABA')
-                    if upd == 'b':
+                    elif upd == 'b':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате ABB')
-                    if upd == 'c':
+                    elif upd == 'c':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате ABC')
-                if slovo2 == 'c':
+                elif slovo2 == 'c':
                     if upd == 'a':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате ACA')
-                    if upd == 'b':
+                    elif upd == 'b':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате ACB')
-                    if upd == 'c':
+                    elif upd == 'c':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате ACC')
-            if slovo == 'b':
+            elif slovo == 'b':
                 if slovo2 == 'a':
                     if upd == 'a':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате BAA')
-                    if upd == 'b':
+                    elif upd == 'b':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате BAB')
-                    if upd == 'c':
+                    elif upd == 'c':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате BAC')
-                if slovo2 == 'b':
+                elif slovo2 == 'b':
                     if upd == 'a':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате BBA')
-                    if upd == 'b':
+                    elif upd == 'b':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате BBB')
-                    if upd == 'c':
+                    elif upd == 'c':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате BBC')
-                if slovo2 == 'c':
+                elif slovo2 == 'c':
                     if upd == 'a':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате BCA')
-                    if upd == 'b':
+                    elif upd == 'b':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате BCB')
-                    if upd == 'c':
+                    elif upd == 'c':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате BCC')
-            if slovo == 'c':
+            elif slovo == 'c':
                 if slovo2 == 'a':
                     if upd == 'a':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате CAA')
-                    if upd == 'b':
+                    elif upd == 'b':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате CAB')
-                    if upd == 'c':
+                    elif upd == 'c':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате CAC')
-                if slovo2 == 'b':
+                elif slovo2 == 'b':
                     if upd == 'a':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате CBA')
-                    if upd == 'b':
+                    elif upd == 'b':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате CBB')
-                    if upd == 'c':
+                    elif upd == 'c':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате CBC')
-                if slovo2 == 'c':
+                elif slovo2 == 'c':
                     if upd == 'a':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате CCA')
-                    if upd == 'b':
+                    elif upd == 'b':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате CCB')
-                    if upd == 'c':
+                    elif upd == 'c':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате CCC')
 
