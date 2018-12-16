@@ -86,10 +86,10 @@ while True:
             if slovo == 'a':
                 if upd == 'a':
                     user_id = update[0][3]
-                    send_photo(user_id, 'photo-174113882_456239138' , 'Ты в комнате AA')
+                    send_photo(user_id, 'photo-174113882_456239138', 'Ты в комнате AA')
                 elif upd == 'b':
                     user_id = update[0][3]
-                    write_msg(user_id, 'Ты в комнате AB')
+                    send_photo(user_id, 'photo-174113882_456239139', 'Ты в комнате AB')
                 elif upd == 'c':
                     user_id = update[0][3]
                     write_msg(user_id, 'Ты в комнате AC')
