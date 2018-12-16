@@ -92,7 +92,7 @@ while True:
                     send_photo(user_id, 'photo-174113882_456239139', 'Ты в комнате AB')
                 elif upd == 'c':
                     user_id = update[0][3]
-                    write_msg(user_id, 'Ты в комнате AC')
+                    send_photo(user_id, 'photo-174113882_456239147', 'Ты в комнате AC')
             elif slovo == 'b':
                 if upd == 'a':
                     user_id = update[0][3]
@@ -137,16 +137,16 @@ while True:
                     elif upd == 'c':
                         user_id = update[0][3]
                         write_msg(user_id, 'Ты в комнате ABC')
-                elif slovo2 == 'c':
-                    if upd == 'a':
-                        user_id = update[0][3]
-                        write_msg(user_id, 'Ты в комнате ACA')
-                    elif upd == 'b':
-                        user_id = update[0][3]
-                        write_msg(user_id, 'Ты в комнате ACB')
-                    elif upd == 'c':
-                        user_id = update[0][3]
-                        write_msg(user_id, 'Ты в комнате ACC')
+                # elif slovo2 == 'c':
+                #     if upd == 'a':
+                #         user_id = update[0][3]
+                #         write_msg(user_id, 'Ты в комнате ACA')
+                #     elif upd == 'b':
+                #         user_id = update[0][3]
+                #         write_msg(user_id, 'Ты в комнате ACB')
+                #     elif upd == 'c':
+                #         user_id = update[0][3]
+                #         write_msg(user_id, 'Ты в комнате ACC') # ТУПИК
             elif slovo == 'b':
                 if slovo2 == 'a':
                     if upd == 'a':
