@@ -65,7 +65,7 @@ while True:
         elif update[0][1] == msg + 3:
             # print(msg + 2)
             # print(update[0][1])
-            if upd == 'да':
+            if upd == 'да'or upd == 'хочу':
                 user_id = update[0][3]
                 msg = update[0][1]
                 send_photo(user_id, 'photo-174113882_456239136',
