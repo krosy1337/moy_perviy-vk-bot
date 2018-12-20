@@ -180,51 +180,22 @@ while True:
                         elif upd == 'c':
                             user_id = update[0][3]
                             write_msg(user_id, 'Ты в комнате BCC')
-                elif slovo == 'c':
-                    if slovo2 == 'a':
+                if update[0][1] == msg2 + 2:
+                    if slovo2 == 'назад':
+                        print(update[0][1])
                         if upd == 'a':
+                            print(upd)
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате CAA')
+                            send_photo(user_id, 'photo-174113882_456239137', 'Ты в комнате A')
                         elif upd == 'b':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате CAB')
+                            send_photo(user_id, 'photo-174113882_456239149', 'Ты в комнате B')
                         elif upd == 'c':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате CAC')
-                    elif slovo2 == 'b':
-                        if upd == 'a':
-                            user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате CBA')
-                        elif upd == 'b':
-                            user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате CBB')
-                        elif upd == 'c':
-                            user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате CBC')
-                    elif slovo2 == 'c':
-                        if upd == 'a':
-                            user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате CCA')
-                        elif upd == 'b':
-                            user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате CCB')
-                        elif upd == 'c':
-                            user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате CCC')
-                if slovo2 == 'назад':
-                    print(update[0][1])
-                    if upd == 'a':
-                        print(upd)
-                        user_id = update[0][3]
-                        send_photo(user_id, 'photo-174113882_456239137', 'Ты в комнате A')
-                    if upd == 'b':
-                        user_id = update[0][3]
-                        send_photo(user_id, 'photo-174113882_456239149', 'Ты в комнате B')
-                    if upd == 'c':
-                        user_id = update[0][3]
-                        send_photo(user_id, 'photo-174113882_456239153', 'Ты в комнате C')
-                    msg1 = update[0][1]
-                    slovo = upd
+                            send_photo(user_id, 'photo-174113882_456239153', 'Ты в комнате C')
+                        msg1 = update[0][1]
+                        slovo = upd
+
     except KeyError:
         long_poll = vk_bot.method('messages.getLongPollServer', {'need_pts': 1, 'lp_version': 3})
         server, key, ts = long_poll['server'], long_poll['key'], long_poll['ts']
