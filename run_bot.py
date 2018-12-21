@@ -132,23 +132,23 @@ while True:
                     if slovo2 == 'a':
                         if upd == 'a':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате AAA')
+                            send_photo(user_id, 'photo-174113882_456239157', 'Ты в комнате AAA')
                         elif upd == 'b':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате AAB')
+                            send_photo(user_id, 'photo-174113882_456239159', 'Ты в комнате AAB')
                         elif upd == 'c':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате AAC')
+                            send_photo(user_id, 'photo-174113882_456239158', 'Ты в комнате AAC')
                     elif slovo2 == 'b':
                         if upd == 'a':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате ABA')
+                            send_photo(user_id, 'photo-174113882_456239161', 'Ты в комнате ABA')
                         elif upd == 'b':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате ABB')
+                            send_photo(user_id, 'photo-174113882_456239162','Ты в комнате ABB')
                         elif upd == 'c':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате ABC')
+                            send_photo(user_id, 'photo-174113882_456239160', 'Ты в комнате ABC')
                 elif slovo == 'b':
                     if slovo2 == 'a':
                         if upd == 'a':
