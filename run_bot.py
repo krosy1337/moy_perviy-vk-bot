@@ -20,16 +20,16 @@ def send_photo(user_id, photo, messag):
 #     return response['items'][0]['id']
 
 
-# def write_msg_attach(user_id, text, attach):
-#     vk_bot.method('messages.send',
-#                   {'user_id': user_id, 'attachment': attach, 'message': text, 'random_id': random.randint(0, 1000)})
+def write_msg_attach(user_id, text, attach):
+    vk_bot.method('messages.send',
+                  {'user_id': user_id, 'attachment': attach, 'message': text, 'random_id': random.randint(0, 1000)})
 
 
 # PHOTO_2 = 'photo324207419_456239051'
 msg = -1
 msg1 = -15
 msg2 = -5
-msgn = -23
+msg3 = -2
 
 
 # def frwd_msg(user_id, messag, text):
@@ -49,9 +49,9 @@ while True:
     try:
         long_poll = requests.get(
             'https://{server}?act={act}&key={key}&ts={ts}&wait=500'.format(server=server,
-                                                                           act='a_check',
-                                                                           key=key,
-                                                                           ts=ts)).json()
+                                                                            act ='a_check',
+                                                                            key =key,
+                                                                            ts =ts)).json()
         update = long_poll['updates']
         if update[0][0] == 4:
             upd = update[0][6].lower()
@@ -199,24 +199,37 @@ while True:
                             send_photo(user_id, 'photo-174113882_456239162', 'Ты в комнате CBB')
                         elif upd == 'c':
                             send_photo(user_id, 'photo-174113882_456239158', 'Ты в комнате CBC')
-
-
+                msg3 = update[0][1]
+            elif update[0][1] == msg3 + 2:
+                if upd == 'назад':
+                    if slovo == 'a':
+                        if slovo2 == 'a':
+                                send_photo(user_id, 'photo-174113882_456239138', 'Ты в комнате AA')
+                        elif slovo2 == 'b':
+                                send_photo(user_id, 'photo-174113882_456239139', 'Ты в комнате AB')
+                    elif slovo == 'b':
+                        if slovo2 == 'a':
+                            send_photo(user_id, 'photo-174113882_456239150', 'Ты в комнате BA')
+                        elif slovo2 == 'b':
+                            send_photo(user_id, 'photo-174113882_456239151', 'Ты в комнате BB')
+                        elif slovo2 == 'c':
+                            send_photo(user_id, 'photo-174113882_456239152', 'Ты в комнате BC')
+                    elif slovo == 'c':
+                        if slovo2 == 'a':
+                            send_photo(user_id, 'photo-174113882_456239156', 'Ты в комнате CA')
+                        elif slovo2 == 'b':
+                            send_photo(user_id, 'photo-174113882_456239155', 'Ты в комнате CB')
+                msg2 = update[0][1]
+            elif 'цвет' in upd:
+                user_id = update[0][3]
+                group_id = -27022023
+                post_name = vk_bot_user.method('wall.get', {'owner_id': group_id, 'count': 1, 'offset': random.randint(0, 2,) or random.randint(4,5) , 'filter': 'owner'})
+                # print(post_name['items'][0]['attachments'][0]['type'])    # photo
+                # print(post_name['items'][0]['attachments'][0]) #id photo
+                attach = str(post_name['items'][0]['attachments'][random.randint(0, 5)]['type']) + str(group_id) + '_' + str(post_name['items'][0]['attachments'][random.randint(0, 5)]['photo']['id'])
+                # print(post_name['items'][0]['attachments'][3])
+                write_msg_attach(user_id, 'вот тебе цветы', attach)
     except KeyError:
         long_poll = vk_bot.method('messages.getLongPollServer', {'need_pts': 1, 'lp_version': 3})
-        server, key, ts = long_poll['server'], long_poll['key'], long_poll['ts']
-
-
-
-
-# elif 'цвет' in upd:
-#     user_id = update[0][3]
-#     group_id = -27022023
-#     post_name = vk_bot_user.method('wall.get', {'owner_id': group_id, 'count': 1, 'offset': random.randint(0, 2,) or random.randint(4,5) , 'filter': 'owner'})
-#     # print(post_name['items'][0]['attachments'][0]['type'])    # photo
-#     # print(post_name['items'][0]['attachments'][0]) #id photo
-#     attach = str(post_name['items'][0]['attachments'][random.randint(0, 5)]['type']) + str(group_id) + '_' + str(post_name['items'][0]['attachments'][random.randint(0, 5)]['photo']['id'])
-#     # print(post_name['items'][0]['attachments'][3])
-#     write_msg_attach(user_id, 'вот тебе цветы', attach)
-
-#  Меняем ts для следующего запроса
+        key = long_poll['key']
     ts = long_poll['ts']
