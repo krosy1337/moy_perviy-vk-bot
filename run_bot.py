@@ -153,48 +153,48 @@ while True:
                     if slovo2 == 'a':
                         if upd == 'a':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате BAA')
+                            send_photo(user_id, 'photo-174113882_456239163', 'Ты в комнате BAA')
                         elif upd == 'b':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате BAB')
+                            send_photo(user_id, 'photo-174113882_456239162', 'Ты в комнате BAB')
                         elif upd == 'c':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате BAC')
+                            send_photo(user_id, 'photo-174113882_456239161', 'Ты в комнате BAC')
                     elif slovo2 == 'b':
                         if upd == 'a':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате BBA')
+                            send_photo(user_id, 'photo-174113882_456239158', 'Ты в комнате BBA')
                         elif upd == 'b':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате BBB')
+                            send_photo(user_id, 'photo-174113882_456239159', 'Ты в комнате BBB')
                         elif upd == 'c':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате BBC')
+                            send_photo(user_id, 'photo-174113882_456239161', 'Ты в комнате BBC')
                     elif slovo2 == 'c':
                         if upd == 'a':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате BCA')
+                            send_photo(user_id, 'photo-174113882_456239159', 'Ты в комнате BCA')
                         elif upd == 'b':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате BCB')
+                            send_photo(user_id, 'photo-174113882_456239164', 'Ты в комнате BCB')
                         elif upd == 'c':
                             user_id = update[0][3]
-                            write_msg(user_id, 'Ты в комнате BCC')
-                if update[0][1] == msg2 + 2:
-                    if slovo2 == 'назад':
-                        print(update[0][1])
-                        if upd == 'a':
-                            print(upd)
-                            user_id = update[0][3]
-                            send_photo(user_id, 'photo-174113882_456239137', 'Ты в комнате A')
-                        elif upd == 'b':
-                            user_id = update[0][3]
-                            send_photo(user_id, 'photo-174113882_456239149', 'Ты в комнате B')
-                        elif upd == 'c':
-                            user_id = update[0][3]
-                            send_photo(user_id, 'photo-174113882_456239153', 'Ты в комнате C')
-                        msg1 = update[0][1]
-                        slovo = upd
+                            send_photo(user_id, 'photo-174113882_456239161', 'Ты в комнате BCC')
+                if slovo2 == 'назад':
+                    print(update[0][1])
+                    if upd == 'a':
+                        print(upd)
+                        user_id = update[0][3]
+                        send_photo(user_id, 'photo-174113882_456239137', 'Ты в комнате A')
+                    elif upd == 'b':
+                        user_id = update[0][3]
+                        send_photo(user_id, 'photo-174113882_456239149', 'Ты в комнате B')
+                    elif upd == 'c':
+                        user_id = update[0][3]
+                        send_photo(user_id, 'photo-174113882_456239153', 'Ты в комнате C')
+                    msg1 = update[0][1]
+                    slovo = upd
+
 
     except KeyError:
         long_poll = vk_bot.method('messages.getLongPollServer', {'need_pts': 1, 'lp_version': 3})
