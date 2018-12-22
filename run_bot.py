@@ -142,12 +142,15 @@ while True:
                         if upd == 'a':
                             user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239161', 'Ты в комнате ABA')
+                            slovo3 = upd
                         elif upd == 'b':
                             user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239162','Ты в комнате ABB')
+                            slovo3 = upd
                         elif upd == 'c':
                             user_id = update[0][3]
-                            send_photo(user_id, 'photo-174113882_456239160', 'Ты в комнате ABC')
+                            send_photo(user_id, 'photo-174113882_456239160', 'Ты в комнате ABC.Молодец, ты нашёл выход!!!')
+                            slovo3 = upd
                 elif slovo == 'b':
                     if upd == 'назад':
                         user_id = update[0][3]
@@ -208,7 +211,10 @@ while True:
                         if slovo2 == 'a':
                                 send_photo(user_id, 'photo-174113882_456239138', 'Ты в комнате AA')
                         elif slovo2 == 'b':
+                            if slovo3 == 'a'or slovo3 =='b':
                                 send_photo(user_id, 'photo-174113882_456239139', 'Ты в комнате AB')
+                                if slovo3 == 'c':
+                                    send_photo(user_id,'','ТЫ вышел из одземелья, назад нельзя)')
                     elif slovo == 'b':
                         if slovo2 == 'a':
                             send_photo(user_id, 'photo-174113882_456239150', 'Ты в комнате BA')
