@@ -67,6 +67,8 @@ while True:
                     msg = update[0][1]
                     send_photo(user_id, 'photo-174113882_456239136',
                                'Ты в подземелье, тебе нужно из него выбраться. Выбери один из трёх путей.')
+                elif upd == 'нет' or upd == 'не хочу':
+                    write_msg(user_id, 'Хорошо, когда захочешь начать игру напиши мне "привет"')
             elif update[0][1] == msg + 2:
                 slovo = upd
                 print(slovo)
