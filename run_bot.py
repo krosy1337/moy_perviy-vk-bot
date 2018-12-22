@@ -29,7 +29,7 @@ def write_msg_attach(user_id, text, attach):
 msg = -1
 msg1 = -15
 msg2 = -5
-msg3 = -2
+msg3 = -6
 
 
 # def frwd_msg(user_id, messag, text):
