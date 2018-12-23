@@ -1,9 +1,5 @@
-import random
-
 import requests
-import vk_api
 from utility import *
-from config import *
 
 print("готов к работе")
 
@@ -18,6 +14,7 @@ while True:
                                                                             ts =ts)).json()
         update = long_poll['updates']
         if update[0][0] == 4:
+            user_id = update[0][3]
             upd = update[0][6].lower()
             if "прив" in upd:  # Если нам пишут привет
                 user_id = update[0][3]
@@ -37,48 +34,35 @@ while True:
                 slovo = upd
                 print(slovo)
                 if upd == 'a':
-                    user_id = update[0][3]
                     send_photo(user_id, 'photo-174113882_456239137', 'Ты в комнате A')
                 elif upd == 'b':
-                    user_id = update[0][3]
                     send_photo(user_id, 'photo-174113882_456239149', 'Ты в комнате B')
                 elif upd == 'c':
-                    user_id = update[0][3]
                     send_photo(user_id, 'photo-174113882_456239153', 'Ты в комнате C')
                 msg1 = update[0][1]
             elif update[0][1] == msg1 + 2:
                 if slovo == 'a':
                     if upd == 'a':
-                        user_id = update[0][3]
                         send_photo(user_id, 'photo-174113882_456239138', 'Ты в комнате AA')
                     elif upd == 'b':
-                        user_id = update[0][3]
                         send_photo(user_id, 'photo-174113882_456239139', 'Ты в комнате AB')
                     elif upd == 'c':
-                        user_id = update[0][3]
                         send_photo(user_id, 'photo-174113882_456239147', 'Ты в комнате AC')
                 elif slovo == 'b':
                     if upd == 'a':
-                        user_id = update[0][3]
                         send_photo(user_id, 'photo-174113882_456239150', 'Ты в комнате BA')
                     elif upd == 'b':
-                        user_id = update[0][3]
                         send_photo(user_id, 'photo-174113882_456239151', 'Ты в комнате BB')
                     elif upd == 'c':
-                        user_id = update[0][3]
                         send_photo(user_id, 'photo-174113882_456239152', 'Ты в комнате BC')
                 elif slovo == 'c':
                     if upd == 'a':
-                        user_id = update[0][3]
                         send_photo(user_id, 'photo-174113882_456239156', 'Ты в комнате CA')
                     elif upd == 'b':
-                        user_id = update[0][3]
                         send_photo(user_id, 'photo-174113882_456239155', 'Ты в комнате CB')
                     elif upd == 'c':
-                        user_id = update[0][3]
                         send_photo(user_id, 'photo-174113882_456239154', 'Ты в комнате CC')
                 if upd == 'назад':
-                    user_id = update[0][3]
                     send_photo(user_id, 'photo-174113882_456239136',
                                'Ты в подземелье, тебе нужно из него выбраться. Выбери один из трёх путей.')
                     msg = update[0][1]
@@ -89,66 +73,49 @@ while True:
             elif update[0][1] == msg2 + 2:
                 if slovo == 'a':
                     if upd == 'назад':
-                        user_id = update[0][3]
                         send_photo(user_id, 'photo-174113882_456239137', 'Ты в комнате A')
                         msg1 = update[0][1]
                     if slovo2 == 'a':
                         if upd == 'a':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239157', 'Ты в комнате AAA')
                         elif upd == 'b':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239159', 'Ты в комнате AAB')
                         elif upd == 'c':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239158', 'Ты в комнате AAC')
                     elif slovo2 == 'b':
                         if upd == 'a':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239161', 'Ты в комнате ABA')
                             slovo3 = upd
                         elif upd == 'b':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239162','Ты в комнате ABB')
                             slovo3 = upd
                         elif upd == 'c':
-                            user_id = update[0][3]
                             send_photo_key(user_id, 'photo-174113882_456239160', 'Ты в комнате ABC.Молодец, ты нашёл выход!!!',endkey)
                             slovo3 = upd
                 elif slovo == 'b':
                     if upd == 'назад':
-                        user_id = update[0][3]
                         send_photo(user_id, 'photo-174113882_456239149', 'Ты в комнате B')
                         msg1 = update[0][1]
                     if slovo2 == 'a':
                         if upd == 'a':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239163', 'Ты в комнате BAA')
                         elif upd == 'b':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239162', 'Ты в комнате BAB')
                         elif upd == 'c':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239161', 'Ты в комнате BAC')
                     elif slovo2 == 'b':
                         if upd == 'a':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239158', 'Ты в комнате BBA')
                         elif upd == 'b':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239159', 'Ты в комнате BBB')
                         elif upd == 'c':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239161', 'Ты в комнате BBC')
                     elif slovo2 == 'c':
                         if upd == 'a':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239159', 'Ты в комнате BCA')
                         elif upd == 'b':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239164', 'Ты в комнате BCB')
                         elif upd == 'c':
-                            user_id = update[0][3]
                             send_photo(user_id, 'photo-174113882_456239161', 'Ты в комнате BCC')
                 elif slovo == 'c':
                     if upd == 'назад':
@@ -193,7 +160,6 @@ while True:
                             send_photo(user_id, 'photo-174113882_456239155', 'Ты в комнате CB')
                 msg2 = update[0][1]
             elif 'цвет' in upd:
-                user_id = update[0][3]
                 group_id = -27022023
                 post_name = vk_bot_user.method('wall.get', {'owner_id': group_id, 'count': 1, 'offset': random.randint(0, 2,) or random.randint(4,5) , 'filter': 'owner'})
                 # print(post_name['items'][0]['attachments'][0]['type'])    # photo
@@ -201,6 +167,9 @@ while True:
                 attach = str(post_name['items'][0]['attachments'][random.randint(0, 5)]['type']) + str(group_id) + '_' + str(post_name['items'][0]['attachments'][random.randint(0, 5)]['photo']['id'])
                 # print(post_name['items'][0]['attachments'][3])
                 write_msg_attach(user_id, 'вот тебе цветы', attach)
+            if 'конец' in upd:
+                send_photo_key(user_id, '', 'Игра закончена.',
+                               endkey)
     except KeyError:
         long_poll = vk_bot.method('messages.getLongPollServer', {'need_pts': 1, 'lp_version': 3})
         key = long_poll['key']

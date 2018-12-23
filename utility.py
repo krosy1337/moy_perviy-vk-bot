@@ -8,6 +8,7 @@ vk_bot_user = vk_api.VkApi(token=ACCESS_TOKEN)
 long_poll = vk_bot.method('messages.getLongPollServer', {'need_pts': 1, 'lp_version': 3})
 server, key, ts = long_poll['server'], long_poll['key'], long_poll['ts']
 
+
 msg = -1
 msg1 = -15
 msg2 = -5
@@ -30,7 +31,9 @@ keyboard = {
     [get_button(label="A", color="positive")],
     [get_button(label="B", color="negative")],
     [get_button(label="C", color="primary")],
-    [get_button(label="Назад", color="default")]
+    [get_button(label="Назад", color="default")],
+    [get_button(label="Конец", color="default")]
+
 
     ]
 }
