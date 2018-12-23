@@ -15,22 +15,22 @@ while True:
         update = long_poll['updates']
         if update[0][0] == 4:
             user_id = update[0][3]
+            ind = update[0][1]
             upd = update[0][6].lower()
             if "прив" in upd:  # Если нам пишут привет
                 user_id = update[0][3]
-                msg = update[0][1]
+                msg = ind
                 user_name = vk_bot.method('users.get', {'user_ids': user_id})
                 write_msg(user_id, 'Привет, ' + (user_name[0]['first_name']))  # сообщение пользователю
                 write_msg(user_id, 'Хочешь начать игру? ')
-            elif update[0][1] == msg + 3:
+            elif ind == msg + 3:
                 if upd == 'да' or upd == 'хочу':
-                    user_id = update[0][3]
-                    msg = update[0][1]
+                    msg = ind
                     send_photo_key(user_id, 'photo-174113882_456239136',
                                'Ты в подземелье, тебе нужно из него выбраться. Выбери один из трёх путей.',keyboard)
                 elif upd == 'нет' or upd == 'не хочу':
                     write_msg(user_id, 'Хорошо, когда захочешь начать игру напиши мне "привет"')
-            elif update[0][1] == msg + 2:
+            elif ind == msg + 2:
                 slovo = upd
                 print(slovo)
                 if upd == 'a':
@@ -40,7 +40,7 @@ while True:
                 elif upd == 'c':
                     send_photo(user_id, 'photo-174113882_456239153', 'Ты в комнате C')
                 msg1 = update[0][1]
-            elif update[0][1] == msg1 + 2:
+            elif ind == msg1 + 2:
                 if slovo == 'a':
                     if upd == 'a':
                         send_photo(user_id, 'photo-174113882_456239138', 'Ты в комнате AA')
@@ -70,11 +70,11 @@ while True:
                 slovo2 = upd
                 print(slovo2)
                 # print(slovo2)
-            elif update[0][1] == msg2 + 2:
+            elif ind == msg2 + 2:
                 if slovo == 'a':
                     if upd == 'назад':
                         send_photo(user_id, 'photo-174113882_456239137', 'Ты в комнате A')
-                        msg1 = update[0][1]
+                        msg1 = ind
                     if slovo2 == 'a':
                         if upd == 'a':
                             send_photo(user_id, 'photo-174113882_456239157', 'Ты в комнате AAA')
@@ -95,7 +95,7 @@ while True:
                 elif slovo == 'b':
                     if upd == 'назад':
                         send_photo(user_id, 'photo-174113882_456239149', 'Ты в комнате B')
-                        msg1 = update[0][1]
+                        msg1 = ind
                     if slovo2 == 'a':
                         if upd == 'a':
                             send_photo(user_id, 'photo-174113882_456239163', 'Ты в комнате BAA')
@@ -120,7 +120,7 @@ while True:
                 elif slovo == 'c':
                     if upd == 'назад':
                         send_photo(user_id, 'photo-174113882_456239153', 'Ты в комнате C')
-                        msg1 = update[0][1]
+                        msg1 = ind
                     if slovo2 == 'a':
                         if upd == 'a':
                             send_photo(user_id,'photo-174113882_456239158', 'Ты в комнате CAA')
@@ -135,8 +135,8 @@ while True:
                             send_photo(user_id, 'photo-174113882_456239162', 'Ты в комнате CBB')
                         elif upd == 'c':
                             send_photo(user_id, 'photo-174113882_456239158', 'Ты в комнате CBC')
-                msg3 = update[0][1]
-            elif update[0][1] == msg3 + 2:
+                msg3 = ind
+            elif ind == msg3 + 2:
                 if upd == 'назад':
                     if slovo == 'a':
                         if slovo2 == 'a':
@@ -158,7 +158,7 @@ while True:
                             send_photo(user_id, 'photo-174113882_456239156', 'Ты в комнате CA')
                         elif slovo2 == 'b':
                             send_photo(user_id, 'photo-174113882_456239155', 'Ты в комнате CB')
-                msg2 = update[0][1]
+                msg2 = ind
             elif 'цвет' in upd:
                 group_id = -27022023
                 post_name = vk_bot_user.method('wall.get', {'owner_id': group_id, 'count': 1, 'offset': random.randint(0, 2,) or random.randint(4,5) , 'filter': 'owner'})
