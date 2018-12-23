@@ -29,8 +29,8 @@ while True:
                 if upd == 'да' or upd == 'хочу':
                     user_id = update[0][3]
                     msg = update[0][1]
-                    send_photo(user_id, 'photo-174113882_456239136',
-                               'Ты в подземелье, тебе нужно из него выбраться. Выбери один из трёх путей.')
+                    send_photo_key(user_id, 'photo-174113882_456239136',
+                               'Ты в подземелье, тебе нужно из него выбраться. Выбери один из трёх путей.',keyboard)
                 elif upd == 'нет' or upd == 'не хочу':
                     write_msg(user_id, 'Хорошо, когда захочешь начать игру напиши мне "привет"')
             elif update[0][1] == msg + 2:
@@ -113,7 +113,7 @@ while True:
                             slovo3 = upd
                         elif upd == 'c':
                             user_id = update[0][3]
-                            send_photo(user_id, 'photo-174113882_456239160', 'Ты в комнате ABC.Молодец, ты нашёл выход!!!')
+                            send_photo_key(user_id, 'photo-174113882_456239160', 'Ты в комнате ABC.Молодец, ты нашёл выход!!!',endkey)
                             slovo3 = upd
                 elif slovo == 'b':
                     if upd == 'назад':

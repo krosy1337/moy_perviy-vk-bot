@@ -1,3 +1,4 @@
+import json
 import random
 
 import vk_api
@@ -11,6 +12,43 @@ msg = -1
 msg1 = -15
 msg2 = -5
 msg3 = -6
+
+def get_button(label, color, payload=""):
+    return {
+        "action": {
+            "type": "text",
+            "payload": json.dumps(payload),
+            "label": label
+        },
+        "color": color
+    }
+
+keyboard = {
+    "one_time": False,
+    "buttons": [
+
+    [get_button(label="A", color="positive")],
+    [get_button(label="B", color="negative")],
+    [get_button(label="C", color="primary")],
+    [get_button(label="Назад", color="default")]
+
+    ]
+}
+
+keyboard = json.dumps(keyboard, ensure_ascii=False).encode('utf-8')
+keyboard = str(keyboard.decode('utf-8'))
+
+
+endkey = {
+    "one_time": False,
+    "buttons": []}
+
+endkey = json.dumps(endkey, ensure_ascii=False).encode('utf-8')
+endkey = str(endkey.decode('utf-8'))
+
+def send_photo_key(user_id, photo, messag, keyb):
+    vk_bot.method('messages.send',
+                  {'user_id': user_id, 'attachment': photo, 'message': messag, 'keyboard':keyb, 'random_id': random.randint(0, 1000)})
 
 
 
