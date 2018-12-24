@@ -65,10 +65,10 @@ def send_photo(user_id, photo, messag):
                   {'user_id': user_id, 'attachment': photo, 'message': messag, 'random_id': random.randint(0, 1000)})
 
 
-# def get_last_post(owner_id, count, offset, filter):
-#     response = vk_bot_user.method('wall.get',
-#                                   {'owner_id': owner_id, 'count': count, 'offset': offset, 'filter': filter})
-#     return response['items'][0]['id']
+def get_last_post(owner_id, count, offset, filter):
+    response = vk_bot_user.method('wall.get',
+                                  {'owner_id': owner_id, 'count': count, 'offset': offset, 'filter': filter})
+    return response['items'][0]['id']
 
 
 def write_msg_attach(user_id, text, attach):
